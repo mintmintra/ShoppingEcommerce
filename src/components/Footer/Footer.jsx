@@ -9,7 +9,7 @@ const Footer = () => {
   return <footer className="footer">
     <Container>
       <Row>
-        <Col lg="4">
+        <Col lg="4" className='mb-4' md='6'>
         <div className="logo">
             <div>
               <h1 className="text-white">Mintra Shop</h1>
@@ -19,7 +19,7 @@ const Footer = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde minima impedit quia nemo veritatis delectus, reprehenderit maiores nostrum sint eveniet.
             </p>
         </Col>
-        <Col lg="3">
+        <Col lg="3" md='3' className='mb-4'>
           <div className="footer__quick-links">
             <h4 className="quick__links-title">
               Top Categories
@@ -40,7 +40,7 @@ const Footer = () => {
             </ListGroup>
           </div>
         </Col>
-        <Col lg="2">
+        <Col lg="2" md='3' className='mb-4'>
         <div className="footer__quick-links">
             <h4 className="quick__links-title">
               Useful Links
@@ -61,7 +61,7 @@ const Footer = () => {
             </ListGroup>
           </div>
         </Col>
-        <Col lg="3">
+        <Col lg="3" md="4">
         <div className="footer__quick-links">
             <h4 className="quick__links-title">
               Contact
