@@ -7,6 +7,7 @@ import logo from '../../assets/images/eco-logo.png'
 import userIcon from '../../assets/images/user-icon.png'
 
 import { Container, Row } from "reactstrap";
+import { useSelector } from 'react-redux';
 
 const nav__links = [
   {
@@ -26,6 +27,8 @@ const nav__links = [
 const Header = () => {
 
   const headerRef = useRef(null)
+  const totalQuantity = useSelector(state=> state.cart.totalQuantity)
+
   const menuRef = useRef(null)
 
     const stickyHeaderFunc = () => {
@@ -72,11 +75,11 @@ const Header = () => {
           <div className="nav__icons">
             <span className="fav__icon">
               <i class="ri-heart-line"></i>
-              <span className="badge">1</span>
+              <span className="badge">0</span>
             </span>
             <span className="cart__icon">
               <i class="ri-shopping-cart-line"></i>
-              <span className="badge">1</span>
+              <span className="badge">{totalQuantity}</span>
             </span>
             <span><motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="userIcon" /></span>
             <div className="mobile__menu">
