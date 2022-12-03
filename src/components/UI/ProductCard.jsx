@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import '../../styles/product-card.css'
 import { Col } from "reactstrap"
 import { Link } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../../redux/slices/cartSlice'
 
@@ -18,9 +18,10 @@ const addToCart = () => {
     productName: item.productName,
     price: item.price,
     image: item.imgUrl
-  })
+    })
   );
-  alert("Product added to the cart");
+    toast.success("Product added successfully")
+
 }
   return (
     <Col lg='3' md='4' className='mb-2'>
