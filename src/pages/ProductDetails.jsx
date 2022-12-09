@@ -29,6 +29,8 @@ const ProductDetails = () => {
 
     const reviewUserName = reviewUser.current.value
     const reviewUserMsg = reviewMsg.current.value
+
+    console.log(reviewUserName, reviewUserMsg);
   }
 
   const addToCart = () => {
