@@ -1,4 +1,4 @@
-import React,{useState,useRef} from 'react'
+import React,{useState,useRef, useEffect} from 'react'
 import { Container, Row, Col } from "reactstrap"
 import { useParams } from 'react-router-dom'
 import products from '../assets/data/products'
@@ -42,7 +42,11 @@ const ProductDetails = () => {
     );
 
     toast.success("Product added successfully")
-  }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [product]);
 
   return <Helmet title={productName}>
     <CommonSection title={productName} />
@@ -113,7 +117,7 @@ const ProductDetails = () => {
                         <input type="text" placeholder='Enter name' ref={reviewUser} />
                       </div>
 
-                      <div className="form__group d-flex align-items-center gap-5">
+                      <div className="form__group d-flex align-items-center gap-5 rating__group">
                         <span>1<i class="ri-star-s-fill"></i></span>
                         <span>2<i class="ri-star-s-fill"></i></span>
                         <span>3<i class="ri-star-s-fill"></i></span>
