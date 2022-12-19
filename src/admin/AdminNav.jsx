@@ -56,7 +56,7 @@ const AdminNav = () => {
             <ul className="admin__menu-list">
               {admin__nav.map((item, index) => (
                 <li className='admin__menu-item' key={index}>
-                  <NavLink to={item.path}>{item.display}</NavLink>
+                  <NavLink to={item.path} className={navClass => navClass.isActive ? "active__admin-menu" : ""}>{item.display}</NavLink>
                 </li>
               ))
 
