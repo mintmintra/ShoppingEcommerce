@@ -2,6 +2,10 @@ import React,{useState} from 'react'
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import { toast } from 'react-toastify';
 
+import {db,storage} from '../firebase.config';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { collection, addDoc } from 'firebase/firestore';
+
 const AddProducts = () => {
 
   const [enterTitle, setEnterTitle] = useState('')
@@ -22,6 +26,16 @@ const AddProducts = () => {
       price: enterPrice,
       imgUrl: enterProductImg
     };
+
+    // add product to the firebase database
+
+    try {
+      const docRef = await collection(db, 'products')
+
+    } catch (error) {
+
+    }
+
     toast.success('product successfully added!')
     console.log(product)
   }
