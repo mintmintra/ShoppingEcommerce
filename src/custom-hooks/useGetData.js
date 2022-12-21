@@ -13,7 +13,7 @@ const useGetData = (collectionName) => {
         }
         getData()
 
-    },[collectionRef])
+    },[]);
   return (
     {data}
   )
