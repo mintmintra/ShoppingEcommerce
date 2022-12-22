@@ -1,10 +1,13 @@
 import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
+import { db } from '../firebase.config'
+import { doc, deleteDoc } from 'firebase/firestore'
 import useGetData from '../custom-hooks/useGetData'
+import { toast } from 'react-toastify'
 
 const AllProducts = () => {
 
-  const {data:productsData} = useGetData('products')
+  const {data:productsData, loading } = useGetData('products')
   
   return <section>
     <Container>
@@ -24,13 +27,13 @@ const AllProducts = () => {
             </thead>
             <tbody>
               {
-                productsData.map(item=>(
+                loading ? <h4 className="py-5 text-center fw-bold">Loading.....</h4> : productsData.map(item=>(
                   <tr key={item.id}>
                     <td><img src={item.imgUrl} alt="product" /></td>
                     <td>{item.title}</td>
                     <td>{item.category}</td>
                     <td>${item.price}</td>
-                    <td><button className="btn btn-danger">Delete</button></td>
+                    <td><button>Delete</button></td>
                   </tr>
                 ))
               }
