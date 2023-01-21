@@ -10,9 +10,11 @@ import ProductsList from '../components/UI/ProductsList'
 import Clock from '../components/UI/Clock'
 import counterImg from '../assets/images/counter-timer-img.png'
 import useGetData from '../custom-hooks/useGetData'
+import products from '../assets/data/products'
 
 const Home = () => {
-  const {data: products, loading} = useGetData('products')
+  // const {data: products, loading} = useGetData('products')
+  const {data, loading} = useState('products')
 
   const [trendingProducts, setTrendingProducts] = useState([])
   const [bestSalesProducts, setBestSalesProducts] = useState([])
