@@ -24,21 +24,8 @@ const ProductDetails = () => {
   const [rating,setRating] = useState(null)
   const { id } = useParams();
   const product = products.find(item=> item.id ===id)
-  const {imgUrl, productName, price, avgRating, review, description } = product
+  const {imgUrl, productName, price, avgRating, reviews, description, shortDesc, category } = product
   
-  const docRef = doc(db,'products', id)
-
-  useEffect(()=>{
-    const getProduct = async()=>{
-      const docSnap = await getDoc(docRef)
-      if(docSnap.exists()){
-        setProduct(docSnap.data())
-      }else{
-        console.log('no product!')
-      }
-    }
-    getProduct()
-  })
 
   // const { 
   //   imgUrl, 
@@ -82,9 +69,9 @@ const ProductDetails = () => {
     toast.success("Product added successfully")
   };
 
-  // useEffect(() => {
-  //   window.scrollTo(0,0);
-  // }, [product]);
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [product]);
 
   return <Helmet title={productName}>
     <CommonSection title={productName} />
@@ -108,7 +95,7 @@ const ProductDetails = () => {
                 </div>
 
                 <p>
-                  {/* (<span>{avgRating}</span> ratings) */}
+                  (<span>{avgRating}</span> ratings)
                 </p>
               </div>
                 <div className="d-flex align-items-center gap-5">
@@ -140,7 +127,7 @@ const ProductDetails = () => {
             </div> : (
               <div className="product__review mt-5">
                 <div className="review__wrapper">
-                  {/* <ul>
+                  <ul>
                     {
                       reviews?.map((item,index)=>(
                         <li key={index} className='mb-4'><h6>Jhon Doe</h6><span>{item.rating} ( rating)</span>
@@ -148,7 +135,7 @@ const ProductDetails = () => {
                         </li>
                       ))
                     }
-                  </ul> */}
+                  </ul>
 
                   <div className="review__form">
                     <h4>Leave your experience</h4>
