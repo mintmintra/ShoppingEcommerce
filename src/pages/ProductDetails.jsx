@@ -9,20 +9,22 @@ import ProductsList from "../components/UI/ProductsList"
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../redux/slices/cartSlice'
 import { toast } from 'react-toastify'
-import {db} from '../firebase.config'
-import {doc,getDoc} from 'firebase/firestore'
-import useGetData from '../custom-hooks/useGetData'
+// import {db} from '../firebase.config'
+// import {doc,getDoc} from 'firebase/firestore'
+// import useGetData from '../custom-hooks/useGetData'
+import products from "../assets/data/products";
 
 const ProductDetails = () => {
 
-  const [product, setProduct] = useState({})
+  // const [product, setProduct] = useState({})
   const [tab,setTab] = useState('desc')
   const reviewUser = useRef('')
   const reviewMsg = useRef('')
   const dispatch = useDispatch()
   const [rating,setRating] = useState(null)
   const { id } = useParams();
-  const {data: products} = useGetData('products')
+  const product = products.find(item=> item.id ===id)
+  const {imgUrl, productName, price, avgRating, review, description } = product
   
   const docRef = doc(db,'products', id)
 
@@ -38,16 +40,16 @@ const ProductDetails = () => {
     getProduct()
   })
 
-  const { 
-    imgUrl, 
-    productName, 
-    price, 
-    // avgRating, 
-    // reviews, 
-    description, 
-    shortDesc, 
-    category 
-  } = product;
+  // const { 
+  //   imgUrl, 
+  //   productName, 
+  //   price, 
+  //   // avgRating, 
+  //   // reviews, 
+  //   description, 
+  //   shortDesc, 
+  //   category 
+  // } = product;
 
   const relatedProducts = products.filter(item => item.category === category)
 
